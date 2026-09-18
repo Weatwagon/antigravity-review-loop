@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Operating System
+.DS_Store
+Thumbs.db
+
+# Editor & Antigravity local session files
+.vscode/
+.idea/
+*.tmp

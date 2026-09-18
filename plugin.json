@@ -1,0 +1,21 @@
+{
+  "name": "review-loop",
+  "version": "1.1.0",
+  "description": "Two-stage gated engineering loop with Ponytail anti-bloat audits: Cranky Senior PM gate for plans, Senior Dev & QA gate for implementations.",
+  "author": {
+    "name": "Antigravity Community"
+  },
+  "license": "MIT",
+  "homepage": "https://github.com/Weatwagon/antigravity-review-loop",
+  "keywords": [
+    "antigravity",
+    "review-loop",
+    "reviewLoop",
+    "ponytail",
+    "quality-gates",
+    "pm-review",
+    "dev-review",
+    "yagni",
+    "anti-bloat"
+  ]
+}
