@@ -110,11 +110,17 @@ Evaluates the initial technical plan across 6 core dimensions:
 ---
 
 ### Gate 2: Senior Dev & Ponytail Anti-Bloat Review (Implementation Stage)
-Evaluates code diffs, automated test execution, and structural simplicity.
+Evaluates code diffs, automated test execution, structural simplicity, and **above all, user request fidelity**.
 
 ![Dev Gate Scorecard](assets/dev_gate_scorecard.jpg)
 
-#### The Ponytail Anti-Bloat Audit
+#### 🎯 Heaviest Weight: End-to-End User Request Fidelity (40%)
+The primary mandate of Gate 2 is preventing **requirement amnesia and goal drift**:
+$$\text{Original User Prompt} \longrightarrow \text{Architecture Plan} \longrightarrow \text{Code Implementation} \longrightarrow \text{Delivered \& Verified Result}$$
+- The reviewer audits every explicit requirement, constraint, and fallback from the user's initial prompt.
+- **Zero Tolerance for Requirement Drift:** If any requested feature was dropped, forgotten, or quietly substituted along the way, Gate 2 **CANNOT pass** (docks 25% to 40% immediately).
+
+#### The Ponytail Anti-Bloat Audit (20%)
 The reviewer actively scans for over-engineering and applies deductions:
 - `yagni:` Premature abstraction, single-use interface, or speculative configuration. **(-5% to -10% per finding)**
 - `stdlib:` Hand-rolled wheel where the standard library already provides a solution. **(-5% per finding)**
@@ -123,10 +129,9 @@ The reviewer actively scans for over-engineering and applies deductions:
 
 #### Hard-to-Meet Adversarial Criteria
 To achieve $\ge 90\%$ completion, the solution must pass these checkpoints:
-1. **Adversarial Negative Testing:** Proof that invalid inputs, missing parameters, and boundary limits fail safely.
-2. **Zero-Leak Sanitization:** Complete elimination of personal identifiers, local machine directories, or private tokens.
-3. **Idempotency:** Installers, setup scripts, and commands must run repeatedly with clean, identical states.
-4. **Cross-Platform Portability:** Operates smoothly across Windows PowerShell, macOS, and Linux without brittle path assumptions.
+1. **Adversarial Negative Testing (15%):** Proof that invalid inputs, missing parameters, and boundary limits fail safely.
+2. **Zero-Leak Sanitization (15%):** Complete elimination of personal identifiers, local machine directories, or private tokens.
+3. **Portability & Idempotency (10%):** Installers, setup scripts, and commands must run repeatedly with clean, identical states across Windows, macOS, and Linux.
 
 ---
 

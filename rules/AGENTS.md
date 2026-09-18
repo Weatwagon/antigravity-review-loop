@@ -30,7 +30,9 @@ When the user asks for a goal using `/reviewLoop`, `/review-loop`, `start /revie
 
 6. **Gate 2: Senior Dev & Ponytail Anti-Bloat Reviewer Subagent**:
    - Spawn/invoke the reviewer subagent acting as an **unforgiving senior staff engineer & QA reviewer**.
-   - **Ponytail Simplicity Audit:** Audit diffs for `yagni:` (speculative code), `stdlib:` (reinvented wheels), and `shrink:` (bloat). Dock 5–10% per finding.
+   - **🎯 Heaviest Weight (40%) — User Request Fidelity & End-to-End Lineage:** Trace `[Original User Prompt] ──> [Architecture Plan] ──> [Code Implementation] ──> [Delivered & Verified Result]`. If ANY requirement or constraint from the user's ask was dropped, forgotten, or quietly substituted, immediately dock 25–40% and reject the gate.
+   - **Ponytail Simplicity Audit (20%):** Audit diffs for `yagni:` (speculative code), `stdlib:` (reinvented wheels), and `shrink:` (bloat) based on [Dietrich Gebert's Ponytail](https://github.com/DietrichGebert/ponytail). Dock 5–10% per finding.
    - **Hard-to-Meet Criteria:** Require proof of negative failure tests, zero-leak sanitization, idempotency, and cross-platform portability.
-   - If `Completion < DR Gate`, fix defects and re-test up to the specified retry limit.
+   - If `Completion < DR Gate`, fix defects, restore missing requirements, and re-test up to the specified retry limit.
    - Conclude and seal the goal with `<!-- GOAL_COMPLETE -->` once `Completion >= DR Gate`.
+
