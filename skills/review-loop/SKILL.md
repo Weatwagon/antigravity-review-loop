@@ -113,27 +113,27 @@ Draft an implementation plan following [`references/plan_template.md`](reference
 
 ---
 
-### Step 4: Gate 2 — Senior Staff Dev & Ponytail Anti-Bloat Review Subagent
+### Step 4: Gate 2 — Senior Staff Dev & QA Review Subagent
 1. Spawn or invoke a review subagent adopting the persona in [`references/dev_persona.md`](references/dev_persona.md):
-   - **Persona**: Uncompromising Senior Staff Dev & QA Architect armed with the **Ponytail Complexity Ladder** (adapted from [Dietrich Gebert's Ponytail](https://github.com/DietrichGebert/ponytail)).
+   - **Persona**: Uncompromising Senior Staff Dev & QA Architect.
    - **🎯 Primary Checkpoint (Heaviest Weight: 40%) — User Request Fidelity & Lineage:**
      - Traces: `[User Request] ──> [Architecture Plan] ──> [Code Implementation] ──> [Delivered & Verified Result]`
      - Validates that 100% of the user's explicit ask made it through the entire development cycle into the actual delivered results.
      - **Zero Tolerance for Requirement Drift:** If any requirement was dropped, forgotten, or quietly substituted, docks **25% to 40%** immediately, failing the gate.
-   - **Ponytail Simplicity Audit (20%):** Scans diffs for `yagni:` (speculative code), `stdlib:` (reinvented wheels), and `shrink:` (bloat). Docks **5% to 10%** per finding.
-   - **Hard-to-Meet Adversarial Criteria:**
-     - *Negative Testing Proof (15%):* Requires explicit automated tests for invalid inputs, boundary errors, and failure recovery.
-     - *Zero-Leak Sanitization (15%):* Immediate rejection if any local machine paths or personal identifiers leak.
-     - *Portability & Idempotency (10%):* Validates Windows PowerShell, Linux, and macOS compatibility with repeatable, clean execution.
-   - **Rubric Breakdown**: User Request Fidelity (40%), Ponytail Anti-Bloat (20%), Adversarial Negative Testing (15%), Security & Sanitization (15%), Portability & Idempotency (10%).
-2. The subagent inspects code diffs and test logs, returning a `PERCENTAGE_COMPLETE: X%`, user request lineage table, itemized Ponytail tags, and deficiency list.
+   - **Quality & Verification Criteria:**
+     - *Automated Verification & Tests (25%):* Comprehensive unit and integration test suites covering positive paths and failure boundaries.
+     - *Robustness & Error Handling (15%):* Clear diagnostic messages, input validation, and graceful degradation.
+     - *Security & Sanitization (10%):* Workspace containment and zero hardcoded personal paths.
+     - *Portability & Idempotency (10%):* Repeatable, clean execution across Windows, macOS, and Linux.
+   - **Rubric Breakdown**: User Request Fidelity (40%), Automated Verification (25%), Robustness & Error Handling (15%), Security & Sanitization (10%), Portability & Idempotency (10%).
+2. The subagent inspects code diffs and test logs, returning a `PERCENTAGE_COMPLETE: X%`, user request lineage table, and deficiency list.
 3. Evaluate the result:
    ```bash
    python .agents/plugins/review-loop/skills/review-loop/scripts/scorecard.py --phase dr --score <PERCENTAGE> --gate <DR_GATE> --iteration <ITERATION> --max-retries <DR_RETRIES>
    ```
 4. **Decision Loop**:
    - **If Percentage $\ge$ DR Gate**: Pass Gate 2. Proceed to Step 5.
-   - **If Percentage < DR Gate and Retries Remain**: Implement missing user requirements, eliminate bloat, add missing negative tests, increment iteration, and re-submit to Gate 2.
+   - **If Percentage < DR Gate and Retries Remain**: Implement missing user requirements, fix defects, add missing tests, increment iteration, and re-submit to Gate 2.
    - **If Retries Exhausted**: Document completed vs deferred items and flag for user inspection.
 
 ---

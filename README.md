@@ -3,9 +3,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python: 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/)
 [![Antigravity Compatible](https://img.shields.io/badge/Antigravity-2.0%20%7C%20CLI-brightgreen.svg)](https://antigravity.google)
-[![Anti-Bloat Powered](https://img.shields.io/badge/Ponytail-Anti--Bloat%20Audit-orange.svg)](#the-ponytail-anti-bloat-audit)
+[![Quality Gate Powered](https://img.shields.io/badge/Quality-Gated%20Lifecycle-brightgreen.svg)](#the-two-quality-gates)
 
-A robust, two-tier gated engineering workflow for **Google Antigravity** that ensures features are rigorously planned before implementation and ruthlessly verified against bloat and edge cases before completion.
+A robust, two-tier gated engineering workflow for **Google Antigravity** that ensures features are rigorously planned before implementation and thoroughly verified against user requirements and edge cases before completion.
 
 ![Review Loop Overview](assets/review_loop_overview.jpg)
 
@@ -15,11 +15,11 @@ A robust, two-tier gated engineering workflow for **Google Antigravity** that en
 
 AI coding assistants often fall into two traps:
 1. **The Rushed Plan Trap:** Jumping straight into coding with incomplete specs, missing fallbacks, and hand-waved security assumptions.
-2. **The Rubber-Stamp Dev Review Trap:** Automated dev reviews often pass happily (100% complete!) even when the resulting code is over-engineered, full of speculative abstractions (`yagni`), reinvents standard libraries, or leaves failure modes completely untested.
+2. **The Rubber-Stamp Dev Review Trap:** Automated dev reviews often pass happily (100% complete!) even when the resulting code drifts from the user's original request or leaves failure modes completely untested.
 
 **Review Loop** introduces an autonomous, adversarial dual-gate engineering loop:
 - **Gate 1 (Plan Stage):** Reviewed by a **Cranky, Picky Senior Project Manager** who rejects hand-waving, checks blast radius, and demands explicit fallbacks.
-- **Gate 2 (Implementation Stage):** Audited by an uncompromising **Senior Staff Dev & QA Architect** armed with the **Ponytail Complexity Ladder** (docking scores for speculative abstractions, bloat, or missing negative failure tests).
+- **Gate 2 (Implementation Stage):** Audited by an uncompromising **Senior Staff Dev & QA Architect** who places the heaviest weight (40%) on End-to-End User Request Fidelity and comprehensive test verification.
 
 ---
 
@@ -36,9 +36,9 @@ graph TD
     E -- "No (Score < Gate & Retries Left)" --> F["Refine Plan & Address Critiques"]
     F --> D
     E -- "Yes (Score >= Gate)" --> G["Step 2: Implementation & Negative Tests"]
-    G --> H["Gate 2: Senior Dev & Ponytail Anti-Bloat Review"]
+    G --> H["Gate 2: Senior Staff Dev & QA Review"]
     H --> I{"Completion >= DR Gate?"}
-    I -- "No (Completion < Gate & Retries Left)" --> J["Eliminate Bloat, Fix Defects & Re-Test"]
+    I -- "No (Completion < Gate & Retries Left)" --> J["Fix Defects, Add Tests & Re-Review"]
     J --> H
     I -- "Yes (Completion >= Gate)" --> K["Step 3: Goal Complete Seal & Final Scorecard"]
 ```
@@ -99,7 +99,7 @@ Trigger the review loop directly in chat with your task requirements:
 ### Gate 1: Cranky Picky Senior PM Review (Plan Stage)
 Evaluates the initial technical plan across 6 core dimensions:
 1. **Scope & Deliverable Precision (20%):** Are deliverables clearly itemized with unambiguous acceptance criteria?
-2. **Feasibility & Ponytail Simplicity (20%):** Is this the shortest, cleanest architecture? Are standard libraries used first?
+2. **Feasibility & Architectural Soundness (20%):** Is the architecture realistic, robust, and directly solving the user's requirements?
 3. **Security, Permissions & Blast Radius (15%):** Are protected files respected and local user paths sanitized?
 4. **User Safety & Error Handling (15%):** Are boundary inputs and crash scenarios mitigated?
 5. **UI/UX & Developer Ergonomics (15%):** Is the interface or CLI intuitive and foot-gun proof?
@@ -109,8 +109,8 @@ Evaluates the initial technical plan across 6 core dimensions:
 
 ---
 
-### Gate 2: Senior Dev & Ponytail Anti-Bloat Review (Implementation Stage)
-Evaluates code diffs, automated test execution, structural simplicity, and **above all, user request fidelity**.
+### Gate 2: Senior Staff Dev & QA Review (Implementation Stage)
+Evaluates code diffs, automated test execution, robustness, and **above all, user request fidelity**.
 
 ![Dev Gate Scorecard](assets/dev_gate_scorecard.jpg)
 
@@ -120,18 +120,12 @@ $$\text{Original User Prompt} \longrightarrow \text{Architecture Plan} \longrigh
 - The reviewer audits every explicit requirement, constraint, and fallback from the user's initial prompt.
 - **Zero Tolerance for Requirement Drift:** If any requested feature was dropped, forgotten, or quietly substituted along the way, Gate 2 **CANNOT pass** (docks 25% to 40% immediately).
 
-#### The Ponytail Anti-Bloat Audit (20%)
-The reviewer actively scans for over-engineering and applies deductions:
-- `yagni:` Premature abstraction, single-use interface, or speculative configuration. **(-5% to -10% per finding)**
-- `stdlib:` Hand-rolled wheel where the standard library already provides a solution. **(-5% per finding)**
-- `shrink:` 200 lines of boilerplate where 40 lines of idiomatic code would suffice. **(-5% per finding)**
-- `delete:` Dead code, unused imports, or orphaned scaffolding.
-
-#### Hard-to-Meet Adversarial Criteria
-To achieve $\ge 90\%$ completion, the solution must pass these checkpoints:
-1. **Adversarial Negative Testing (15%):** Proof that invalid inputs, missing parameters, and boundary limits fail safely.
-2. **Zero-Leak Sanitization (15%):** Complete elimination of personal identifiers, local machine directories, or private tokens.
-3. **Portability & Idempotency (10%):** Installers, setup scripts, and commands must run repeatedly with clean, identical states across Windows, macOS, and Linux.
+#### Rigorous Engineering & Verification Checkpoints (60%)
+To achieve $\ge 90\%$ completion, the solution must pass these quality checkpoints:
+1. **Automated Verification & Test Coverage (25%):** Proof that comprehensive unit and integration tests run cleanly, covering positive paths, failure modes, and edge cases.
+2. **Robustness & Error Handling (15%):** Defensive input validation, clear error messages, and graceful degradation when dependencies fail.
+3. **Security, Sanitization & Blast Radius (10%):** Workspace containment and complete elimination of hardcoded personal paths or credentials.
+4. **Portability & Idempotency (10%):** Installers, scripts, and commands run repeatedly with clean, identical states across Windows, macOS, and Linux.
 
 ---
 
@@ -171,11 +165,11 @@ antigravity-review-loop/
 │       │   └── scorecard.py          # Scorecard evaluator & markdown renderer
 │       ├── references/
 │       │   ├── pm_persona.md         # Cranky Senior PM prompt & rubric
-│       │   ├── dev_persona.md        # Senior Dev & Ponytail reviewer prompt & rubric
+│       │   ├── dev_persona.md        # Senior Staff Dev & QA reviewer prompt & rubric
 │       │   └── plan_template.md      # PM-ready architecture plan template
 │       └── tests/
 │           ├── test_gate_parser.py   # Unit tests for argument parsing
-│           ├── test_scorecard.py     # Unit tests for scoring & Ponytail extraction
+│           ├── test_scorecard.py     # Unit tests for scoring & scorecard rendering
 │           └── test_negative_cases.py# Adversarial boundary & negative tests
 └── tests/
     └── test_sanitization.py          # Leak detection scanner

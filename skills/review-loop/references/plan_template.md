@@ -23,7 +23,7 @@ Use this template when authoring the initial plan for Gate 1 (Cranky Senior PM R
 ## 2. Technical Architecture & Feasibility
 - **Architecture Overview:** [How the components connect]
 - **Dependencies & Prerequisites:** [Required runtimes, libraries, or system capabilities]
-- **Minimalism & YAGNI:** [Justification that this is the cleanest, least bloated design]
+- **Simplicity & Architectural Soundness:** [Justification that this is the cleanest, most robust design]
 
 ---
 

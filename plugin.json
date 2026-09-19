@@ -1,7 +1,7 @@
 {
   "name": "review-loop",
   "version": "1.1.0",
-  "description": "Two-stage gated engineering loop with Ponytail anti-bloat audits: Cranky Senior PM gate for plans, Senior Dev & QA gate for implementations.",
+  "description": "Two-stage gated engineering loop: Cranky Senior PM gate for plans, Senior Staff Dev & QA gate for implementations.",
   "author": {
     "name": "Antigravity Community"
   },
@@ -11,11 +11,10 @@
     "antigravity",
     "review-loop",
     "reviewLoop",
-    "ponytail",
     "quality-gates",
     "pm-review",
     "dev-review",
-    "yagni",
-    "anti-bloat"
+    "qa-testing",
+    "request-fidelity"
   ]
 }
